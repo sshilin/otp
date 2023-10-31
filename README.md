@@ -12,8 +12,8 @@ go get github.com/sshilin/otp
 ```go
 key := []byte("secret")
 
-hotp := NewHotp()
-totp := NewTotp()
+hotp := otp.NewHotp()
+totp := otp.NewTotp()
 
 code := hotp.Generate(key, totp.At(time.Now()))
 
