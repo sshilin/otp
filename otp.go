@@ -23,6 +23,11 @@
 //
 //	// Validate a TOTP code
 //	isValid := hotp.Validate(key, code, totp.At(time.Now()))
+//
+//	// Validate a TOTP code one time step backward and forward
+//	// because of possible clock drifts between a client and a server
+//	isValid = hotp.Validate(key, code, totp.At(time.Now())-1)
+//	isValid = hotp.Validate(key, code, totp.At(time.Now())+1)
 package otp
 
 import (
