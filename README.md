@@ -1,4 +1,5 @@
 # One-Time Passwords
+[![GoDoc](https://godoc.org/github.com/sshilin/otp?status.svg)](https://godoc.org/github.com/sshilin/otp)
 
 Package otp implements the RFC 4226 (HOTP) and RFC 6238 (TOTP) standards for one-time password generation and validation. It provides functions to generate and validate HMAC-Based and Time-Based One-Time Passwords using a shared secret key.
 
@@ -12,8 +13,8 @@ go get github.com/sshilin/otp
 ```go
 key := []byte("secret")
 
-hotp := NewHotp()
-totp := NewTotp()
+hotp := otp.NewHotp()
+totp := otp.NewTotp()
 
 code := hotp.Generate(key, totp.At(time.Now()))
 
@@ -24,7 +25,7 @@ isValid := hotp.Validate(key, code, totp.At(time.Now()))
 The example generates QR-code for registering a demo service in TOTP mode and then prompts codes from the authenticator.
 ```go
 func main() {
-	key := make([]byte, 10)
+	key := make([]byte, 20)
 	rand.Read(key)
 
 	hotp := otp.NewHotp()
